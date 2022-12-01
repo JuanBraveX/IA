@@ -18,3 +18,10 @@ Si ya se tiene Python (cmd):
 https://digi.bib.uni-mannheim.de/tesseract/tesseract-ocr-w32-setup-v5.2.0.20220712.exe
 ->64 bits
 https://digi.bib.uni-mannheim.de/tesseract/tesseract-ocr-w64-setup-v5.2.0.20220712.exe
+	*Pillow:
+Si ya se tiene Python (cmd):
+  pip install pillow
+	
+	*Numpy:
+Si ya se tiene Python (cmd):
+  pip install numpy

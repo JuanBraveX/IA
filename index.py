@@ -33,7 +33,7 @@ def uploader_file():
         kernel = np.ones((7,7),np.uint8)
         while(text == ""):
             if(num > 7):
-                return "Error"
+                return render_template("imagen.html", ntext='ERROR NO TEXTO', name='Scanner.jpg', tnum=num)
             num += 1
             erosion = cv2.erode(img,kernel,iterations = num)
             distor = cv2.fastNlMeansDenoisingColored(erosion, None, 10, 10, 7, 15)
