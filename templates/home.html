@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <title>IA</title>
+</head>
+
+<body>
+    <div class="container-fluid p-5 bg-primary text-white text-center">
+        <h1>Inteligencia Artifical</h1>
+        <p>Selecione la imagen que desea comvertir a texto</p>
+    </div>
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-sm-4">
+                <h3>Cargar Imagen</h3>
+                <br>
+                <form action="/uploader" method="POST" enctype="multipart/form-data">
+                    <input type="file" name="file" class="form-control form-control-lg" id="formFileLg" />
+                    <br>
+                    <input type="submit" class="btn btn-primary" />
+                </form>
+                <br>
+                <h3>Cargar Camara</h3>
+                <img class="img-fluid img-thumbnail" src="{{ url_for('video_feed') }}">
+                <button onclick="myFunction()" class="btn btn-primary" type="button">Capturar</button>
+                <form action="/uploader1" method="POST" enctype="multipart/form-data">
+                    <input id="input" type="text" name="fname" value="Scanner" hidden><br>
+                    <input type="submit" class="btn btn-primary" />
+                </form>
+                <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+                <script>
+                    function myFunction() {
+                        var name = document.getElementById("input").value;
+                        console.log(name);
+                        $.post("/takeimage",
+                            {
+                                name: name
+                            },
+                            function (data, status) {
+                                alert("Data: " + data + "\nStatus: " + status);
+                            });
+                    }
+                </script>
+
+            </div>
+            {% block content %}
+
+
+
+
+            {% endblock%}
+
+        </div>
+    </div>
+    <br>
+    <br>
+    <!-- Footer -->
+    <footer class="bg-primary text-center text-white">
+        <!-- Grid container -->
+        <div class="container p-4">
+
+
+
+
+            <!-- Section: Links -->
+            <section class="">
+                <!--Grid row-->
+                <div class="row">
+                    <!--Grid column-->
+                    <div class="col-md-6">
+                        <h5 class="text-uppercase">Equipo</h5>
+
+                        <ul class="list-unstyled mb-0">
+                            <li>
+                                <p class="text-white">Omar Alejandro Hernández Bucio</p>
+                            </li>
+                            <li>
+                                <p class="text-white">Juan Antonio Pedraza Guzman</p>
+                            </li>
+                            <li>
+                                <p class="text-white">Bryan Salinas Tapia</p>
+                            </li>
+                            <li>
+                                <p class="text-white">Martin Uribe Ordoñez</p>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--Grid column-->
+
+                    <!--Grid column-->
+                    <div class="col-md-6">
+                        <h5 class="text-uppercase">No. de Control</h5>
+
+                        <ul class="list-unstyled mb-0">
+                            <li>
+                                <p class="text-white">S18030221</p>
+                            </li>
+                            <li>
+                                <p class="text-white">S18030166</p>
+                            </li>
+                            <li>
+                                <p class="text-white">S18030217</p>
+                            </li>
+                            <li>
+                                <p class="text-white">S18030180</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!--Grid row-->
+            </section>
+            <!-- Section: Links -->
+
+        </div>
+        <!-- Grid container -->
+
+        <!-- Copyright -->
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
+            © 2022 TECNM CIUDAD HIDALGO:
+            <a class="text-white" href="https://mdbootstrap.com/" hidden>MDBootstrap.com</a>
+        </div>
+        <!-- Copyright -->
+
+    </footer>
+    <!-- Footer -->
+</body>
+
+</html>

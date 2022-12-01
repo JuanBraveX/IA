@@ -1,0 +1,30 @@
+{% extends "home.html" %}
+
+{% block content %}
+<div class="col-sm-4">
+    <h3>Imagen</h3>
+    <img class="img-fluid img-thumbnail" src="{{ url_for('static', filename = name) }}" alt="" srcset="">
+    <hr>
+    <form action="/ref" method="POST" enctype="multipart/form-data">
+        <input type="text" value="{{ name }}" name="nm" hidden>
+        <input type="text" value="{{ tnum }}" name="nu" hidden>
+        <input type="submit" class="btn btn-primary" value="Recargar" hidden/>
+    </form>
+</div>
+<div class="col-sm-4">
+    <h3>Texto Generado</h3>
+    <p id="p1">{{ ntext }}</p>
+    <button onclick="copiarAlPortapapeles('p1')" class="btn btn-primary">COPIAR párrafo al portapapeles</button>
+    <div id="alerta" class="alert invisible"></div>
+    <script>
+        function copiarAlPortapapeles(id_elemento) {
+            var aux = document.createElement("input");
+            aux.setAttribute("value", document.getElementById(id_elemento).innerHTML);
+            document.body.appendChild(aux);
+            aux.select();
+            document.execCommand("copy");
+            document.body.removeChild(aux);
+        }
+    </script>
+</div>
+{% endblock%}
