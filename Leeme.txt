@@ -34,4 +34,7 @@ Si ya se tiene Python (cmd):
 Si ya se tiene Python (cmd):
   pip install numpy
 
-  
+  Para correr se necesita estar en la ruta raiz del index.py y en cmd escribir el 
+  comando "python index.py"
+  Las rutas pueden variar en donde ejecunten el archivo. 
+
