@@ -36,5 +36,8 @@ Si ya se tiene Python (cmd):
 
   Para correr se necesita estar en la ruta raiz del index.py y en cmd escribir el 
   comando "python index.py"
-  Las rutas pueden variar en donde ejecunten el archivo. 
+  Las rutas pueden variar en donde ejecunten el archivo.
+
+referencias
+https://github.com/FaztWeb/python-flask-first-website/blob/master/templates/layout.html 
 

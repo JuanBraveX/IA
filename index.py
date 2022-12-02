@@ -24,16 +24,16 @@ def uploader_file():
    if request.method == 'POST':
         f = request.files['file']
         #f.save(secure_filename(f.filename))
-        f.save(os.path.join(app.config['UPLOAD_FOLDER'], f.filename))
+        f.save(os.path.join(app.config['UPLOAD_FOLDER'], "image.jpg"))
         num=-1
-        ruta = "C://xampp 7.0//htdocs//linea-IA//IA//static//"+f.filename
+        ruta = "C://xampp 7.0//htdocs//linea-IA//IA//static//image.jpg"
         img = cv2.imread(ruta)
         #ruta2 = ruta[0:-4]+"_2.jpg"
         text = ""
         kernel = np.ones((7,7),np.uint8)
         while(text == ""):
             if(num > 7):
-                return render_template("imagen.html", ntext='ERROR NO TEXTO', name='Scanner.jpg', tnum=num)
+                return render_template("imagen.html", ntext='ERROR NO TEXTO', name='image.jpg', tnum=num)
             num += 1
             erosion = cv2.erode(img,kernel,iterations = num)
             distor = cv2.fastNlMeansDenoisingColored(erosion, None, 10, 10, 7, 15)
@@ -41,7 +41,7 @@ def uploader_file():
             text = pytesseract.image_to_string(distor, lang='spa')
         text = re.sub('[^A-Za-z0-9" "ñÁÉÍÓÚáéíóú,.]+', ' ', text)
         cv2.destroyAllWindows()
-        return render_template("imagen.html", ntext=text, name=f.filename, tnum=num)
+        return render_template("imagen.html", ntext=text, name="image.jpg", tnum=num)
 
 @app.route('/uploader1', methods = ['GET', 'POST'])
 def uploader_cam():
@@ -65,28 +65,6 @@ def uploader_cam():
         text = re.sub('[^A-Za-z0-9" "ñÁÉÍÓÚáéíóú,.]+', ' ', text)
         cv2.destroyAllWindows()
         return render_template("imagen.html", ntext=text, name='Scanner.jpg', tnum=num)
-
-@app.route('/ref', methods = ['GET', 'POST'])
-def image():
-    if request.method == 'POST':
-        fname = request.form['nm']
-        num= int(request.form['nu'])
-        ruta = "C://xampp 7.0//htdocs//linea-IA//IA//static//"+fname
-        img = cv2.imread(ruta)
-        #ruta2 = ruta[0:-4]+"_2.jpg"
-        text = ""
-        kernel = np.ones((7,7),np.uint8)
-        while(text == ""):
-            if(num > 7):
-                    return "Error"
-            num += 1
-            erosion = cv2.erode(img,kernel,iterations = num)
-            distor = cv2.fastNlMeansDenoisingColored(erosion, None, 10, 10, 7, 15)
-            #Aplicamos en texto el cambio de imagen a string con tesseract
-            text = pytesseract.image_to_string(distor, lang='spa')
-        text = re.sub('[^A-Za-z0-9" "ñÁÉÍÓÚáéíóú,.]+', ' ', text)
-        cv2.destroyAllWindows()
-        return render_template("imagen.html", ntext=text, name=fname, tnum=num)
 
 @app.route('/takeimage', methods = ['POST'])
 def takeimage():

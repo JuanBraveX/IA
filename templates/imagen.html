@@ -1,20 +1,14 @@
 {% extends "home.html" %}
 
 {% block content %}
-<div class="col-sm-4">
+<div class="col-sm-4 rounded-3 bg-light p-5">
     <h3>Imagen</h3>
     <img class="img-fluid img-thumbnail" src="{{ url_for('static', filename = name) }}" alt="" srcset="">
-    <hr>
-    <form action="/ref" method="POST" enctype="multipart/form-data">
-        <input type="text" value="{{ name }}" name="nm" hidden>
-        <input type="text" value="{{ tnum }}" name="nu" hidden>
-        <input type="submit" class="btn btn-primary" value="Recargar" hidden/>
-    </form>
 </div>
-<div class="col-sm-4">
+<div class="col-sm-4 rounded-3 bg-light p-5">
     <h3>Texto Generado</h3>
-    <p id="p1">{{ ntext }}</p>
-    <button onclick="copiarAlPortapapeles('p1')" class="btn btn-primary">COPIAR párrafo al portapapeles</button>
+    <p id="p1" class="fst-normal lh-base">{{ ntext }}</p>
+    <button onclick="copiarAlPortapapeles('p1')" class="btn btn-primary w-100"> <i class="bi bi-files"></i> COPIAR párrafo</button>
     <div id="alerta" class="alert invisible"></div>
     <script>
         function copiarAlPortapapeles(id_elemento) {
@@ -24,6 +18,7 @@
             aux.select();
             document.execCommand("copy");
             document.body.removeChild(aux);
+            alert("Se a copiado \n con exito");
         }
     </script>
 </div>
