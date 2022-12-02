@@ -38,6 +38,10 @@ Si ya se tiene Python (cmd):
   comando "python index.py"
   Las rutas pueden variar en donde ejecunten el archivo.
 
+  si lo desea correr en su computador tambien puede ingresar la siguiente url
+  http://177.225.249.106:8080/
+
 referencias
-https://github.com/FaztWeb/python-flask-first-website/blob/master/templates/layout.html 
+https://github.com/FaztWeb/python-flask-first-website/blob/master/templates/layout.html
+Y todo Google
 
